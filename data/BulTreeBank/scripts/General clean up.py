@@ -62,4 +62,8 @@ for file_name in file_names:
 # Remove dates - '^[0-9].*г.\\n' -> ''
 # Remove points in lists - '^[0-9].\\n' -> ''
 # Turn titles into sentences where possible.
+# Split sentences on separate lines where the previous sentence ends on a quotation mark. - '([.?!…])"([А-Я])', '([.?!…])" ([А-Я])'
+# Add missing spaces - '!–' -> '! –'; '\?–' -> '? –'; '\?…' -> '? …'; '\.–' -> '. –'; '!…' -> '! …'
+# Delete lines like these: – – –
+# Investigate where short dashes are used - [^(?<=по|най)]- - and switch to long dashes at some of the places / delete some dashes
 

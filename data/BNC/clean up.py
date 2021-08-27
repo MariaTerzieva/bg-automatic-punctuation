@@ -33,6 +33,7 @@ for directory in directories:
 #7) Find lines that don't start with a capital letter and merge with the previous line if the sentence was falsely split up: '\n([^А-Я])' -> ' \1'
 #8) Find lines that don't end on a sentence break punctuation symbol and merge with next sentence if neded: '[^.?!]\n'
 #9) Use standand quotation symbols  everywhere - " - and replace "--" with "-" in cases it is meant like "-"
+#10) Replace "–" with "-" due to inconsistencies in using dashes.
 
         
 
