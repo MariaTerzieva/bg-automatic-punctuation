@@ -22,7 +22,7 @@ with open(statistics_file_name,"w") as statistics_file, open(input_file_name,"w"
                 break
 
         if line.startswith('"') and line.endswith('"') and line.count('"') == 2 or line.startswith('(') and line.endswith(')') or count != 0 or line.count('"') % 2 != 0:
-            print(line_number, ': ', line, file=statistics_file)
+            print(line_number, ':', line, file=statistics_file)
 
             line_without_enclosing_quotation_marks = re.sub('^"(.*)"$', '\\1', line)
             line_without_enclosing_brackets = re.sub('^\((.*)\)$', '\\1', line_without_enclosing_quotation_marks)
