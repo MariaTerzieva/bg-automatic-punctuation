@@ -7,7 +7,6 @@ dir_name = os.path.dirname(__file__)
 file_names = ["Georgi Stamatov Vestovoj Dimo",
               "Girltalk",
               "Ivan Vazov Chichovtzi",
-              "Ladislav Klima Novel",
               "Robert Sheckley Skulking Permit",
               "Bulgarian parliament Meetings",
               "Bulgarian parliament Recorded Sessions – part 1",
