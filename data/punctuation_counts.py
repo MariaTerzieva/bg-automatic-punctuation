@@ -6,7 +6,6 @@ from collections import Counter
 punctuation_enhanced = punctuation + '\n–„“…'
 file_names = ['Bible/processed/Bibliia_clean.txt',
               'BulTreeBank/processed/Atanas Dalchev Fragments.txt',
-              'BulTreeBank/processed/Ladislav Klima Novel.txt',
               'BulTreeBank/processed/Bulgarian parliament Meetings.txt',
               'BulTreeBank/processed/Bulgarian parliament Recorded Sessions – part 1.txt',
               'BulTreeBank/processed/Bulgarian parliament Recorded Sessions – part 2.txt',
