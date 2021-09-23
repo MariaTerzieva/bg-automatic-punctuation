@@ -21,4 +21,5 @@ with open(full_file_name, "w") as fout:
 ### Manual clean-up:
 #1) Investigate if end of sentence signs in the middle of the sentence - [.?!][^\n]+?
 #2) Investigate lines starting with a small letter word - ^[а-я] - and fix if necessary
+#3) Replace "–" with a regular dash "-" due to ASCII reasons
 
