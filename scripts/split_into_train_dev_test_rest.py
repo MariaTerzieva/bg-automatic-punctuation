@@ -1,3 +1,12 @@
+# arguments are:
+# sys.argv[1]: the name of the original file we want to divide into train, dev, test, rest
+# sys.argv[2]: the percentage of data from the original file (as an int) we want the train set to contain
+# sys.argv[3]: the percentage of data from the original file (as an int) we want the dev set to contain
+# sys.argv[4]: the percentage of data frokm the original file (as an int) we want the test set to contain
+# outcome:
+# the original file is divided into 4 new files (but the original file is also kept): train, dev, test and rest
+# the rest file contains the data from the original file that hasn't been added yet neither to train, nor to dev, nor to test
+
 import sys
 import re
 import random
