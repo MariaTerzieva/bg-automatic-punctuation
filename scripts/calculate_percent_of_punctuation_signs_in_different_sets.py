@@ -1,3 +1,8 @@
+# arguments are:
+# sys.argv[1]: the name of the original file divided into train, dev, test (and rest)
+# outcome:
+# prints on the screen the percentages for the different punctuation signs in the three sets and in the original file
+
 import sys
 import re
 from string import punctuation
