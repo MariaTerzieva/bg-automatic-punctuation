@@ -1,0 +1,8 @@
+classla==1.0.2
+scikit-learn==0.23.2
+notebook==6.4.4
+ipynb==0.5.1
+sklearn-crfsuite==0.3.6
+wasabi==0.8.2
+inquirer==2.7.0
+nltk==3.6.5
