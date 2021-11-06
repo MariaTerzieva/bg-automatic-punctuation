@@ -2,6 +2,7 @@
 # sys.argv[1]: the name of the original file
 # sys.argv[2]: the name of the data set file to add sentences to: train, dev or test
 # sys.argv[3]: the percentage of data (as an int) from the original file that we want to add; data is taken from the rest file
+#              the rest file is expected to be in the same directory as the original file
 # outcome:
 # the data set file we specified as sys.argv[2] has the additional percentage of data (sys.argv[3]) we specified; data is taken from the rest file
 # the rest file is adjusted to exclude the data added to the data set file

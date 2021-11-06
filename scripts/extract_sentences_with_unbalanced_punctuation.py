@@ -1,3 +1,9 @@
+# arguments are:
+# sys.argv[1]: the name of the file we want to find unbalanced punctuation in
+# outcome:
+# a file with the mismatched sentences is created in the same directory prefixed with the line number in the original file where the sentence is
+# the script finds unbalanced quotation marks and brackets
+
 import sys
 import re
 
@@ -23,6 +29,3 @@ with open(statistics_file_name,"w") as statistics_file:
 
         if line.startswith('"') and line.endswith('"') and line.count('"') == 2 or line.startswith('(') and line.endswith(')') or count != 0 or line.count('"') % 2 != 0:
             print(line_number, ':', line, file=statistics_file)
-
-
-

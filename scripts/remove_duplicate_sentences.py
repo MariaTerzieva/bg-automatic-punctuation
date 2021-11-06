@@ -1,3 +1,7 @@
+# outcome:
+# the script goes through all the files in the corpus and deletes these sentences from the corpus that exist in more than one file leaving only one occurence of the sentence in the first file processed by the script
+# the script saves the deleted sentences in a file called "Duplicate Sentences.txt"
+
 import sys
 import re
 

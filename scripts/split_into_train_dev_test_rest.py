@@ -45,13 +45,3 @@ with open(input_file_name,"r") as input_file, open(train_file_name,"w") as train
 
     for sentence in rest_set:
         print(sentence, file=rest_file)
-
-
-
-
-
-
-
-
-
-

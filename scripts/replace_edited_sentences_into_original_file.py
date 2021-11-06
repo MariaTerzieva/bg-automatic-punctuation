@@ -1,3 +1,9 @@
+# arguments are:
+# sys.argv[1]: the name of the file with mismatched sentences that has been manually edited
+#              the original file from which the mismatched sentences were extracted is expected to be in the same directory
+# outcome:
+# the script replaces the edited sentences from the mismatched sentences file into the original file
+
 import sys
 import re
 
