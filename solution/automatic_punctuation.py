@@ -3,7 +3,6 @@ from modules.data_prep import data_prep
 from modules.classify import *
 from difflib import SequenceMatcher
 from wasabi import color
-from nltk import tokenize
 from signal import signal, SIGINT
 
 
@@ -97,14 +96,12 @@ if __name__ == '__main__':
     print("Поставяне на пунктуация в текста...")
     print("Натиснете CTRL + C, за да прекратите операцията и да излезете от системата.")
 
-    model_features, original_words = data_prep(contents)
+    model_features, original_sentences = data_prep(contents)
     predicted_punctuation = predict_punctuation(model_features)
-    punctuated_text = punctuate(original_words, predicted_punctuation)
-    original_text = "".join(contents)
+    punctuated_sentences = punctuate(original_sentences, predicted_punctuation)
 
     if file_output:
       with open(file_output['output_file_path'], "w") as f:
-        punctuated_sentences = tokenize.sent_tokenize(punctuated_text)
         print("Записване на резултатите в изхдния файл...")
         print("Натиснете CTRL + C, за да прекратите операцията и да излезете от системата.")
 
@@ -112,7 +109,8 @@ if __name__ == '__main__':
           print(sentence, file=f)   
     else:
       print("Вашият текст с автоматично поставена пунктуация:")
-      print(diff_strings(original_text, punctuated_text))
+      for original_sentence, punctuated_sentence in zip(contents, punctuated_sentences):
+        print(diff_strings(original_sentence, punctuated_sentence))
 
     main_menu_answers = inquirer.prompt(MAIN_MENU)
 

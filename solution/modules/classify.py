@@ -25,21 +25,40 @@ def predict_punctuation(X):
     return decoded_y
 
 
-# input - words and y - list of words and labels for each word
-# output - text (string; y labels applied to the words)
-def punctuate(words, y):
-    punctuated_sentences = ''
+# input - sentences and y - list of sentences (lists) and labels for each word
+# output - the labels as list of lists matching sentences structure
+def restructure_y_to_list_of_lists(sentences, y):
+    sentence_lengths = [len(sentence) for sentence in sentences]
+    y_restructured = []
+    for i, sentence_length in enumerate(sentence_lengths):
+        start = sum(sentence_lengths[:i])
+        end = sum(sentence_lengths[:(i+1)])
+        sentence_y = y[start:end]
+        y_restructured.append(sentence_y)
+    return y_restructured
 
-    for word, label in zip(words, y):
-        if word == '^':
-            pass
-        elif label in ('"', '('):
-            punctuated_sentences = punctuated_sentences + word + ' ' + label
-        elif label == '-':
-            punctuated_sentences = punctuated_sentences + word + ' ' + label + ' '
-        elif label == ':"':
-            punctuated_sentences = punctuated_sentences + word + label[0] + ' ' + label[1]
-        else:
-            punctuated_sentences = punctuated_sentences + word + label + ' '
+
+# input - sentences and y - list of sentences (lists) and labels for each word
+# output - list of punctuated sentences (lis of string; y labels applied to the words)
+def punctuate(sentences, y):
+    y_restructured = restructure_y_to_list_of_lists(sentences, y)
+    punctuated_sentences = []
+
+    for sentence, sentence_labels in zip(sentences, y_restructured):
+        punctuated_sentence = ''
+
+        for i in range(len(sentence)):
+            if sentence[i] == '^':
+                pass
+            elif sentence_labels[i] in ('"', '('):
+                punctuated_sentence = punctuated_sentence + sentence[i] + ' ' + sentence_labels[i]
+            elif sentence_labels[i] == '-':
+                punctuated_sentence = punctuated_sentence + sentence[i] + ' ' + sentence_labels[i] + ' '
+            elif sentence_labels[i] == ':"':
+                punctuated_sentence = punctuated_sentence + sentence[i] + sentence_labels[i][0] + ' ' + sentence_labels[i][1]
+            else:
+                punctuated_sentence = punctuated_sentence + sentence[i] + sentence_labels[i] + ' '
     
-    return punctuated_sentences.strip()
+        punctuated_sentences.append(punctuated_sentence.strip())
+
+    return punctuated_sentences

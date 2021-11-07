@@ -101,6 +101,8 @@ def between_two_verbs(sentence, i):
     return verb_before and verb_after
 
 
+# input - a full xpos tag as defined in BulTreeBank tagset (string) and a prefix word for the output dictionary keys (string)
+# output - a dictionary with subtags generated from the full xpos tag with prefix word and their corresponding values
 def split_xpos(xpos, word='word'):
     def gender_number_article(number, gender, article):
         gender_number_article = ''
@@ -205,7 +207,7 @@ def word2features(sentence, i):
 
 
 # input - input_sentences - list of sentences (strings)
-# output - X, words - features and words in orginal format 
+# output - X, sentences - features and list of sentences in orginal text format 
 def data_prep(input_sentences):
     data = add_special_symbol_at_start_of_each_sentence(input_sentences)
 
@@ -217,15 +219,17 @@ def data_prep(input_sentences):
     pos_tokenized_data = run_through_classla_pipeline(data_without_punctuation, nlp_pos_tokenize)
 
     X = []
-    words = []
+    sentences = []
 
     for sentence in pos_tokenized_data:
         sent2features = []
+        sentence_words = []
 
         for i in range(len(sentence)):
-            words.append(sentence[i]['text'])
+            sentence_words.append(sentence[i]['text'])
             sent2features.append(word2features(sentence, i))
 
         X.append(sent2features)
+        sentences.append(sentence_words)
         
-    return X, words
+    return X, sentences
